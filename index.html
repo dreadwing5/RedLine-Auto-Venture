@@ -14,187 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="style.css" />
     <title>RedLine Auto Venture</title>
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-      }
-
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background-color: #333;
-      }
-
-      .logo {
-        color: red;
-        font-size: 24px;
-      }
-
-      .navigation {
-        display: flex;
-        align-items: center;
-      }
-
-      .navbar a {
-        color: white;
-        text-decoration: none;
-        padding: 14px 20px;
-      }
-
-      .contact-button {
-        background-color: red;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .hero {
-        height: 60vh;
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
-          url("hero-image.jpg");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-      }
-
-      .pricing {
-        display: flex;
-        justify-content: center;
-        background-color: #f9f9f9;
-        padding: 50px;
-      }
-
-      .pricing-card {
-        background-color: white;
-        padding: 20px;
-        margin: 0 10px;
-        text-align: center;
-      }
-
-      .contact-us {
-        text-align: center;
-        padding: 50px;
-      }
-
-      .before-after {
-        display: flex;
-        justify-content: center;
-        padding: 50px;
-      }
-
-      .before-after img {
-        max-width: 500px;
-        margin: 0 10px;
-      }
-
-      .footer {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        text-align: left;
-      }
-
-      .detailed-pricing-section {
-        background-color: #f9f9f9;
-        padding: 30px;
-      }
-
-      .pricing-title {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .pricing-table {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        border-collapse: collapse;
-      }
-
-      .pricing-table th,
-      .pricing-table td {
-        padding: 12px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-      }
-
-      .pricing-table thead th {
-        background-color: #4caf50;
-        color: white;
-      }
-
-      .pricing-table tbody td {
-        background-color: #f2f2f2;
-      }
-
-      @media screen and (max-width: 600px) {
-        .pricing-table,
-        .pricing-table th,
-        .pricing-table td {
-          display: block;
-        }
-
-        .pricing-table thead {
-          display: none;
-        }
-
-        .pricing-table tbody td {
-          padding-left: 50%;
-          position: relative;
-          text-align: right;
-        }
-
-        .pricing-table tbody td:before {
-          content: attr(data-label);
-          position: absolute;
-          left: 15px;
-          width: 50%;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-
-        .footer {
-          background-color: #333;
-          color: white;
-          padding: 20px;
-          text-align: center;
-        }
-
-        .footer-logo {
-          color: red;
-          font-size: 24px;
-          margin-bottom: 10px;
-        }
-
-        .footer-contact {
-          margin-bottom: 10px;
-        }
-
-        .footer-icons {
-          font-size: 20px;
-        }
-
-        .footer-icons a {
-          color: white;
-          margin: 0 5px;
-        }
-      }
-    </style>
   </head>
 
   <body>
@@ -203,7 +25,6 @@
       <div class="navigation">
         <a href="#hero">Home</a>
         <a href="#pricing">Pricing</a>
-        <a href="#contact-us">Contact Us</a>
         <button class="contact-button">Contact Us</button>
       </div>
     </div>
@@ -286,6 +107,29 @@
           <!-- More rows can be added here -->
         </tbody>
       </table>
+    </div>
+
+    <div id="gallery" class="gallery-section">
+      <h2 class="gallery-title">Our Work Showcase</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="public/img/Test_1.jpeg" alt="Polished Bike" />
+          <p>Polished Bike</p>
+        </div>
+        <div class="gallery-item">
+          <img src="public/img/Test_2.jpeg" alt="Polished Bike" />
+          <p>Polished Bike</p>
+        </div>
+        <div class="gallery-item">
+          <img src="public/img/Test_3.jpeg" alt="Polished Bike" />
+          <p>Polished Bike</p>
+        </div>
+        <div class="gallery-item">
+          <img src="public/img/Test_4.jpeg" alt="Polished Bike" />
+          <p>Polished Bike</p>
+        </div>
+        <!-- More gallery items here -->
+      </div>
     </div>
 
     <div class="footer">
