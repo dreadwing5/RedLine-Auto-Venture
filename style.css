@@ -13,6 +13,8 @@ body,
         align-items: center;
         padding: 20px;
         background-color: #333;
+        z-index: 0;
+      
       }
 
       .logo {
@@ -63,7 +65,7 @@ body,
     }
     
     .hero-content {
-        z-index: 1;
+        z-index: -1;
         text-align: center;
         background-color: rgba(0, 0, 0, 0.5);
         padding: 20px;
@@ -96,7 +98,24 @@ body,
         padding: 20px;
         margin: 0 10px;
         text-align: center;
-      }
+        /* Make the card take up the full width on small screens */
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    @media screen and (min-width: 768px) {
+        /* On medium screens, make the card a bit smaller */
+        .pricing-card {
+            width: calc(50% - 20px); /* This will make it take half of the screen width minus margins */
+        }
+    }
+    
+    @media screen and (min-width: 992px) {
+        /* On large screens, make the card even smaller */
+        .pricing-card {
+            width: calc(33% - 20px); /* This will make it take one third of the screen width minus margins */
+        }
+    }
 
       .contact-us {
         text-align: center;
@@ -198,6 +217,18 @@ body,
     border-bottom: 2px solid #009879;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 768px) {
+    .detailed-pricing-table {
+        width: 600px; /* You can adjust this width based on your content */
+        min-width: 600px;
+    }
+}
+
 .pricing-title {
     text-align: center;
     margin-top: 1em;
@@ -263,4 +294,94 @@ body,
 
 .footer-careers a:hover {
     text-decoration: underline;
+}
+
+
+
+/* Fix the gallery section on smaller screens */
+@media screen and (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}
+
+/* Fix the before-after section on smaller screens */
+@media screen and (max-width: 768px) {
+    .before-after {
+        flex-direction: column;
+    }
+
+    .before-after img {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Fix the footer layout on smaller screens */
+@media screen and (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer-column1, .footer-column2, .footer-column3 {
+        padding: 20px 0;
+        text-align: center;
+    }
+}
+
+
+/* Navigation toggle button (hamburger) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.hamburger {
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hide navigation menu by default on mobile and display the toggle button */
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .navigation {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 60px; /* height of the navbar */
+        left: 0;
+        background-color: #333;
+    }
+
+    .navigation a {
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* Display navigation when toggle button is active */
+    .navigation.active {
+        display: flex;
+    }
+
+    /* Transform hamburger into an "X" */
+    .nav-toggle.active .hamburger {
+        transform: rotate(90deg);
+    }
 }

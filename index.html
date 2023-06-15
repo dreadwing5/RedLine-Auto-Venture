@@ -22,11 +22,18 @@
   <body>
     <div class="navbar">
       <div class="logo">RedLine Auto Venture</div>
-      <div class="navigation">
+      <!-- Navigation Toggle Button -->
+      <button class="nav-toggle" aria-label="toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <!-- Navigation Menu -->
+      <nav class="navigation">
         <a href="#hero">Home</a>
+        <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
+        <a href="#contact">About</a>
         <a href="#contact" class="contact-button">Contact Us</a>
-      </div>
+      </nav>
     </div>
 
     <div id="hero" class="hero">
@@ -66,7 +73,7 @@
       </div>
     </div>
 
-    <div id="pricing" class="pricing-section">
+    <div id="services" class="pricing-section">
       <h2 class="section-header">Main Service Pricing</h2>
       <div class="pricing">
         <div class="pricing-card">
@@ -88,125 +95,127 @@
     </div>
 
     <!-- Detailed Pricing Section -->
-    <div id="detailed-pricing" class="detailed-pricing-section">
+    <div id="pricing" class="detailed-pricing-section">
       <h2 class="section-header">Detailed Pricing</h2>
       <p class="pricing-title">Revised Rate List from April 2023</p>
-      <table class="detailed-pricing-table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Vehicle Type</th>
-            <th>Foam Wash (₹)</th>
-            <th>Body Polish (₹)</th>
-            <th>Interior Vacuum (₹)</th>
-            <th>Interior Polish (₹)</th>
-            <th>Tyre Polish (₹)</th>
-            <th>Total (₹)</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Bicycle</td>
-            <td>20</td>
-            <td>10</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>30</td>
-            <td>7 min</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Scooty</td>
-            <td>40</td>
-            <td>40</td>
-            <td>-</td>
-            <td>-</td>
-            <td>20</td>
-            <td>100</td>
-            <td>25 min</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Motorcycle</td>
-            <td>50</td>
-            <td>40</td>
-            <td>-</td>
-            <td>-</td>
-            <td>30</td>
-            <td>120</td>
-            <td>30 min</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Tempo (3W)</td>
-            <td>140</td>
-            <td>60</td>
-            <td>-</td>
-            <td>30</td>
-            <td>30</td>
-            <td>260</td>
-            <td>60 min</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Small Car (4W)</td>
-            <td>150</td>
-            <td>Semi/Full 40/100</td>
-            <td>50</td>
-            <td>50</td>
-            <td>40</td>
-            <td>390</td>
-            <td>1h 40min</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>SUV Car (4W)</td>
-            <td>180</td>
-            <td>50</td>
-            <td>120</td>
-            <td>50</td>
-            <td>40</td>
-            <td>440</td>
-            <td>1h 50min</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Pickup (4W)</td>
-            <td>180</td>
-            <td>60</td>
-            <td>40</td>
-            <td>30</td>
-            <td>40</td>
-            <td>350</td>
-            <td>1h 50min</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Tractor Engine/Trailer</td>
-            <td>180/100</td>
-            <td>80/70</td>
-            <td>-</td>
-            <td>-</td>
-            <td>50/30</td>
-            <td>310/200</td>
-            <td>2h 10min</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Small Truck</td>
-            <td>200</td>
-            <td>80</td>
-            <td>50</td>
-            <td>50</td>
-            <td>60</td>
-            <td>440</td>
-            <td>2h 10min</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="detailed-pricing-table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Vehicle Type</th>
+              <th>Foam Wash (₹)</th>
+              <th>Body Polish (₹)</th>
+              <th>Interior Vacuum (₹)</th>
+              <th>Interior Polish (₹)</th>
+              <th>Tyre Polish (₹)</th>
+              <th>Total (₹)</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Bicycle</td>
+              <td>20</td>
+              <td>10</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>30</td>
+              <td>7 min</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Scooty</td>
+              <td>40</td>
+              <td>40</td>
+              <td>-</td>
+              <td>-</td>
+              <td>20</td>
+              <td>100</td>
+              <td>25 min</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Motorcycle</td>
+              <td>50</td>
+              <td>40</td>
+              <td>-</td>
+              <td>-</td>
+              <td>30</td>
+              <td>120</td>
+              <td>30 min</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Tempo (3W)</td>
+              <td>140</td>
+              <td>60</td>
+              <td>-</td>
+              <td>30</td>
+              <td>30</td>
+              <td>260</td>
+              <td>60 min</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Small Car (4W)</td>
+              <td>150</td>
+              <td>Semi/Full 40/100</td>
+              <td>50</td>
+              <td>50</td>
+              <td>40</td>
+              <td>390</td>
+              <td>1h 40min</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>SUV Car (4W)</td>
+              <td>180</td>
+              <td>50</td>
+              <td>120</td>
+              <td>50</td>
+              <td>40</td>
+              <td>440</td>
+              <td>1h 50min</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Pickup (4W)</td>
+              <td>180</td>
+              <td>60</td>
+              <td>40</td>
+              <td>30</td>
+              <td>40</td>
+              <td>350</td>
+              <td>1h 50min</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Tractor Engine/Trailer</td>
+              <td>180/100</td>
+              <td>80/70</td>
+              <td>-</td>
+              <td>-</td>
+              <td>50/30</td>
+              <td>310/200</td>
+              <td>2h 10min</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Small Truck</td>
+              <td>200</td>
+              <td>80</td>
+              <td>50</td>
+              <td>50</td>
+              <td>60</td>
+              <td>440</td>
+              <td>2h 10min</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div id="contact" class="footer">
@@ -256,6 +265,17 @@
     <script>
       document.getElementById("copyright-year").innerHTML =
         new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Toggle button and navigation menu
+        const toggle = document.querySelector(".nav-toggle");
+        const navigation = document.querySelector(".navigation");
+
+        // Toggle navigation menu on click
+        toggle.addEventListener("click", function () {
+          toggle.classList.toggle("active");
+          navigation.classList.toggle("active");
+        });
+      });
     </script>
   </body>
 </html>
