@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>RedLine Auto Venture</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #333;
+      }
+
+      .logo {
+        color: red;
+        font-size: 24px;
+      }
+
+      .navigation {
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 20px;
+      }
+
+      .contact-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .hero {
+        height: 60vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("hero-image.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+      }
+
+      .pricing {
+        display: flex;
+        justify-content: center;
+        background-color: #f9f9f9;
+        padding: 50px;
+      }
+
+      .pricing-card {
+        background-color: white;
+        padding: 20px;
+        margin: 0 10px;
+        text-align: center;
+      }
+
+      .contact-us {
+        text-align: center;
+        padding: 50px;
+      }
+
+      .before-after {
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+      }
+
+      .before-after img {
+        max-width: 500px;
+        margin: 0 10px;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: left;
+      }
+
+      .detailed-pricing-section {
+        background-color: #f9f9f9;
+        padding: 30px;
+      }
+
+      .pricing-title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .pricing-table {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+
+      .pricing-table th,
+      .pricing-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .pricing-table thead th {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .pricing-table tbody td {
+        background-color: #f2f2f2;
+      }
+
+      @media screen and (max-width: 600px) {
+        .pricing-table,
+        .pricing-table th,
+        .pricing-table td {
+          display: block;
+        }
+
+        .pricing-table thead {
+          display: none;
+        }
+
+        .pricing-table tbody td {
+          padding-left: 50%;
+          position: relative;
+          text-align: right;
+        }
+
+        .pricing-table tbody td:before {
+          content: attr(data-label);
+          position: absolute;
+          left: 15px;
+          width: 50%;
+          padding-left: 15px;
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .footer {
+          background-color: #333;
+          color: white;
+          padding: 20px;
+          text-align: center;
+        }
+
+        .footer-logo {
+          color: red;
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
+        .footer-contact {
+          margin-bottom: 10px;
+        }
+
+        .footer-icons {
+          font-size: 20px;
+        }
+
+        .footer-icons a {
+          color: white;
+          margin: 0 5px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="logo">RedLine Auto Venture</div>
+      <div class="navigation">
+        <a href="#hero">Home</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact-us">Contact Us</a>
+        <button class="contact-button">Contact Us</button>
+      </div>
+    </div>
+
+    <div id="hero" class="hero">
+      <h1>Give Your Car the Care it Deserves</h1>
+      <p>Car Wash | Car Polish | Interior Detailing | Car Insurance</p>
+    </div>
+
+    <div class="before-after">
+      <img src="car-before.jpg" alt="Car Before" />
+      <img src="car-after.jpg" alt="Car After" />
+    </div>
+
+    <div id="pricing" class="pricing">
+      <div class="pricing-card">
+        <h2>Basic Wash</h2>
+        <p>$20</p>
+        <p>Exterior wash & dry</p>
+      </div>
+      <div class="pricing-card">
+        <h2>Full Detailing</h2>
+        <p>$80</p>
+        <p>Interior & exterior detailing</p>
+      </div>
+      <div class="pricing-card">
+        <h2>Polish & Wax</h2>
+        <p>$50</p>
+        <p>Exterior polish and wax</p>
+      </div>
+    </div>
+
+    <div class="detailed-pricing-section">
+      <h2 class="pricing-title">REDLINE AUTO VENTURE</h2>
+      <p class="pricing-title">Revised Rate List from September 2022</p>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Sr. no.</th>
+            <th>Models</th>
+            <th>Foam Wash</th>
+            <th>Body Polish</th>
+            <th>Interior Polish</th>
+            <th>Interior Vacuum</th>
+            <th>Tyre Polish</th>
+            <th>Total (Full Service)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Sr. no.">1</td>
+            <td data-label="Models">Bicycle</td>
+            <td data-label="Foam Wash">10</td>
+            <td data-label="Body Polish">10</td>
+            <td data-label="Interior Polish">10</td>
+            <td data-label="Interior Vacuum">-</td>
+            <td data-label="Tyre Polish">30</td>
+            <td data-label="Total (Full Service)">90</td>
+          </tr>
+          <tr>
+            <td data-label="Sr. no.">2</td>
+            <td data-label="Models">Scooter</td>
+            <td data-label="Foam Wash">40</td>
+            <td data-label="Body Polish">30</td>
+            <td data-label="Interior Polish">-</td>
+            <td data-label="Interior Vacuum">20</td>
+            <td data-label="Tyre Polish">-</td>
+            <td data-label="Total (Full Service)">110</td>
+          </tr>
+          <tr>
+            <td data-label="Sr. no.">3</td>
+            <td data-label="Models">Motorcycle</td>
+            <td data-label="Foam Wash">40</td>
+            <td data-label="Body Polish">50</td>
+            <td data-label="Interior Polish">30</td>
+            <td data-label="Interior Vacuum">30</td>
+            <td data-label="Tyre Polish">-</td>
+            <td data-label="Total (Full Service)">240</td>
+          </tr>
+          <!-- More rows can be added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <div class="footer-logo">RedLine Auto Venture</div>
+      <div class="footer-contact">Email: example@example.com</div>
+      <div class="footer-icons">
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="mailto:example@example.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+    </div>
+  </body>
+</html>
