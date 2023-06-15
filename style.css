@@ -2,6 +2,9 @@ body,
       html {
         margin: 0;
         padding: 0;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+
       }
 
       .navbar {
@@ -13,6 +16,8 @@ body,
       }
 
       .logo {
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
         color: red;
         font-size: 24px;
       }
@@ -39,19 +44,45 @@ body,
 
       .hero {
         height: 60vh;
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
-          url("hero-image.jpg");
-        background-size: cover;
-        background-position: center;
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-background-video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        z-index: -1;
+    }
+    
+    .hero-content {
+        z-index: 1;
         text-align: center;
-      }
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+    }
+
+
+    @media screen and (min-width: 768px) {
+        .hero {
+            font-size: 1.5em;
+        }
+    }
+    
+    @media screen and (min-width: 992px) {
+        .hero {
+            font-size: 2em;
+            padding: 100px 50px;
+        }
+    }
+    
 
       .pricing {
         display: flex;
@@ -83,139 +114,23 @@ body,
         margin: 0 10px;
       }
 
-      .footer {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        text-align: left;
-      }
-
-      .detailed-pricing-section {
+     .pricing-section, .detailed-pricing-section {
         background-color: #f9f9f9;
         padding: 30px;
       }
 
-      .pricing-title {
-        text-align: center;
-        margin-bottom: 20px;
-      }
 
-      .pricing-table {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        border-collapse: collapse;
-      }
-
-      .pricing-table th,
-      .pricing-table td {
-        padding: 12px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-      }
-
-      .pricing-table thead th {
-        background-color: #4caf50;
-        color: white;
-      }
-
-      .pricing-table tbody td {
-        background-color: #f2f2f2;
-      }
-
-      .rate-list-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
-    
-    .rate-list-table th, .rate-list-table td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: center;
-    }
-    
-    .rate-list-table th {
-        background-color: #f4f4f4;
-    }
     
     /* Applying Montserrat Font to Navigation and Hero Section */
     .navbar, .hero {
         font-family: 'Montserrat', sans-serif;
     }
 
-      @media screen and (max-width: 600px) {
-        .pricing-table,
-        .pricing-table th,
-        .pricing-table td {
-          display: block;
-        }
-
-        .pricing-table thead {
-          display: none;
-        }
-
-        .pricing-table tbody td {
-          padding-left: 50%;
-          position: relative;
-          text-align: right;
-        }
-
-        .pricing-table tbody td:before {
-          content: attr(data-label);
-          position: absolute;
-          left: 15px;
-          width: 50%;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-
-    }
+   
 
 
-    .footer {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        text-align: center;
-      }
+   
 
-      .footer-logo {
-        color: red;
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-
-      .footer-contact {
-        margin-bottom: 10px;
-      }
-
-      .footer-icons {
-        font-size: 20px;
-      }
-
-      .footer-icons a {
-        color: white;
-        margin: 0 5px;
-      }
-
-/* Table Styles */
-.rate-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-.rate-list-table th, .rate-list-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-}
-
-.rate-list-table th {
-    background-color: #f4f4f4;
-}
 
 /* Gallery Section */
 .gallery-section {
@@ -238,6 +153,13 @@ body,
   .gallery-item {
     background-color: #f4f4f4;
     padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  
+  .gallery-item:hover {
+    transform: scale(1.1);
   }
   
   .gallery-item img {
@@ -245,5 +167,100 @@ body,
     height: auto;
   }
   
+  .detailed-pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    border: 1px solid #dddddd;
+}
 
-  
+.detailed-pricing-table thead tr {
+    background-color: #333;
+    color: #ffffff;
+    text-align: left;
+}
+
+.detailed-pricing-table th,
+.detailed-pricing-table td {
+    padding: 12px 15px;
+}
+
+.detailed-pricing-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.detailed-pricing-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+.detailed-pricing-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.pricing-title {
+    text-align: center;
+    margin-top: 1em;
+}
+
+
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif; 
+}
+
+.footer-column1, .footer-column2, .footer-column3 {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px;
+}
+
+.footer-socials {
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    color: white;
+    margin-right: 15px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.footer-copyright p {
+    font-size: 12px;
+}
+
+.footer-column2 h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-address {
+    margin-bottom: 10px;
+}
+
+.footer-address, .footer-careers {
+    margin-bottom: 10px;
+}
+
+.footer-careers a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-careers a:hover {
+    text-decoration: underline;
+}
