@@ -38,7 +38,7 @@
     <div id="hero" class="hero">
       <div
         class="video-placeholder"
-        style="background-image: url('public/img/Bike\ Photo.png')"
+        style="background-image: url('public/img/Bike\ Photo.webp')"
       ></div>
       <video
         class="hero-background-video"
@@ -293,6 +293,16 @@
         // Bring the video to the front
         document.querySelector(".hero-background-video").style.zIndex = "-1";
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var video = document.querySelector(".hero-background-video");
+
+        // Check if video is already loaded
+        if (video.readyState >= 3) {
+          // HAVE_FUTURE_DATA (3) or HAVE_ENOUGH_DATA (4)
+          videoLoaded();
+        }
+      });
     </script>
   </body>
 </html>
