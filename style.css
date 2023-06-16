@@ -108,14 +108,14 @@ body,
     }
     
 
-      .card-container {
+      .pricing {
         display: flex;
         justify-content: center;
         background-color: #f9f9f9;
         padding: 50px;
       }
 
-      .card {
+      .pricing-card {
         background-color: white;
         padding: 20px;
         margin: 0 10px;
@@ -127,14 +127,14 @@ body,
     
     @media screen and (min-width: 768px) {
         /* On medium screens, make the card a bit smaller */
-        .card {
+        .pricing-card {
             width: calc(50% - 20px); /* This will make it take half of the screen width minus margins */
         }
     }
     
     @media screen and (min-width: 992px) {
         /* On large screens, make the card even smaller */
-        .card {
+        .pricing-card {
             width: calc(33% - 20px); /* This will make it take one third of the screen width minus margins */
         }
     }
@@ -155,7 +155,7 @@ body,
         margin: 0 10px;
       }
 
-     .service-section, .pricing-section {
+     .pricing-section, .detailed-pricing-section {
         background-color: #f9f9f9;
         padding: 30px;
       }
@@ -166,6 +166,11 @@ body,
     .navbar, .hero {
         font-family: 'Montserrat', sans-serif;
     }
+
+   
+
+
+   
 
 
 /* Gallery Section */
@@ -203,7 +208,7 @@ body,
     height: auto;
   }
   
-  .pricing-table {
+  .detailed-pricing-table {
     width: 100%;
     border-collapse: collapse;
     margin: 25px 0;
@@ -211,28 +216,26 @@ body,
     border: 1px solid #dddddd;
 }
 
-/* Pricing Section */
-
-.pricing-table thead tr {
+.detailed-pricing-table thead tr {
     background-color: #333;
     color: #ffffff;
     text-align: left;
 }
 
-.pricing-table th,
-.pricing-table td {
+.detailed-pricing-table th,
+.detailed-pricing-table td {
     padding: 12px 15px;
 }
 
-.pricing-table tbody tr {
+.detailed-pricing-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
-.pricing-table tbody tr:nth-child(even) {
+.detailed-pricing-table tbody tr:nth-child(even) {
     background-color: #f3f3f3;
 }
 
-.pricing-table tbody tr:last-of-type {
+.detailed-pricing-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
@@ -242,7 +245,7 @@ body,
 }
 
 @media screen and (max-width: 768px) {
-    .pricing-table {
+    .detailed-pricing-table {
         width: 600px; /* You can adjust this width based on your content */
         min-width: 600px;
     }
@@ -254,7 +257,6 @@ body,
 }
 
 
-/* Footer section */
 
 .footer {
     background-color: #333;
