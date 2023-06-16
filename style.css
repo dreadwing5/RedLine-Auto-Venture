@@ -45,7 +45,7 @@ body,
       }
 
       .hero {
-        height: 100vh;
+        height: 66vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -54,16 +54,6 @@ body,
         overflow: hidden;
     }
     
-    .video-placeholder {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        z-index: -2;
-    }
     
     .hero-background-video {
         position: absolute;
@@ -73,7 +63,6 @@ body,
         height: 100%;
         object-fit:cover; /* changed from cover to contain */
         z-index: -1;
-        display: none; /* initially hidden */
     }
     
     .hero-content {
@@ -108,14 +97,14 @@ body,
     }
     
 
-      .pricing {
+      .card-container {
         display: flex;
         justify-content: center;
         background-color: #f9f9f9;
         padding: 50px;
       }
 
-      .pricing-card {
+      .card {
         background-color: white;
         padding: 20px;
         margin: 0 10px;
@@ -127,14 +116,14 @@ body,
     
     @media screen and (min-width: 768px) {
         /* On medium screens, make the card a bit smaller */
-        .pricing-card {
+        .card {
             width: calc(50% - 20px); /* This will make it take half of the screen width minus margins */
         }
     }
     
     @media screen and (min-width: 992px) {
         /* On large screens, make the card even smaller */
-        .pricing-card {
+        .card {
             width: calc(33% - 20px); /* This will make it take one third of the screen width minus margins */
         }
     }
@@ -155,7 +144,7 @@ body,
         margin: 0 10px;
       }
 
-     .pricing-section, .detailed-pricing-section {
+     .service-section, .pricing-section {
         background-color: #f9f9f9;
         padding: 30px;
       }
@@ -208,7 +197,7 @@ body,
     height: auto;
   }
   
-  .detailed-pricing-table {
+  .pricing-table {
     width: 100%;
     border-collapse: collapse;
     margin: 25px 0;
@@ -216,26 +205,26 @@ body,
     border: 1px solid #dddddd;
 }
 
-.detailed-pricing-table thead tr {
+.pricing-table thead tr {
     background-color: #333;
     color: #ffffff;
     text-align: left;
 }
 
-.detailed-pricing-table th,
-.detailed-pricing-table td {
+.pricing-table th,
+.pricing-table td {
     padding: 12px 15px;
 }
 
-.detailed-pricing-table tbody tr {
+.pricing-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
-.detailed-pricing-table tbody tr:nth-child(even) {
+.pricing-table tbody tr:nth-child(even) {
     background-color: #f3f3f3;
 }
 
-.detailed-pricing-table tbody tr:last-of-type {
+.pricing-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
@@ -245,7 +234,7 @@ body,
 }
 
 @media screen and (max-width: 768px) {
-    .detailed-pricing-table {
+    .pricing-table {
         width: 600px; /* You can adjust this width based on your content */
         min-width: 600px;
     }
