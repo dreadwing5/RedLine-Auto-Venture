@@ -37,7 +37,11 @@
     </div>
 
     <div id="hero" class="hero">
-      <video class="hero-background-video" autoplay loop muted>
+      <div
+        class="video-placeholder"
+        style="background-image: url('path-to-placeholder-image.jpg')"
+      ></div>
+      <video class="hero-background-video" autoplay loop muted playsinline>
         <source src="public/video/Bike_Video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -274,6 +278,15 @@
         toggle.addEventListener("click", function () {
           toggle.classList.toggle("active");
           navigation.classList.toggle("active");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var video = document.querySelector(".hero-background-video");
+        video.addEventListener("canplaythrough", function () {
+          // When the video is ready to be played, hide placeholder and show video
+          document.querySelector(".video-placeholder").style.display = "none";
+          video.style.display = "block";
         });
       });
     </script>
