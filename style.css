@@ -7,21 +7,19 @@ body,
 
       }
 
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background-color: #333;
-        z-index: 0;
+      .bg--dark {
+        background-color: #202020;
       
       }
 
+      .service-text{
+        font-weight: 400;
+      
+      }
       .logo {
         font-family: 'Orbitron', sans-serif;
         text-transform: uppercase;
-        color: red;
-        font-size: 24px;
+       
       }
 
       .navigation {
@@ -257,7 +255,6 @@ body,
 
 
 .footer {
-    background-color: #333;
     color: white;
     padding: 20px;
     display: flex;

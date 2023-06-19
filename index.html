@@ -2,307 +2,906 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:ital,wght@0,400;0,700;1,700&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="style.css" />
     <title>RedLine Auto Venture</title>
+
+    <style>
+      #mobile-menu {
+        transform: translateY(-110%);
+        transition: transform 0.6s ease-in-out;
+        z-index: 10; /* lower z-index than navbar */
+      }
+
+      #mobile-menu.open {
+        transform: translateY(0);
+      }
+
+      nav {
+        z-index: 20; /* higher z-index to stay above overlay */
+        position: relative;
+      }
+
+      @keyframes slideInFromRight {
+        0% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .title-slide-in {
+        opacity: 0;
+        animation: slideInFromRight 1s ease-out forwards;
+      }
+
+      .description-fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease-in 1.2s forwards; /* additional 1.2s delay */
+      }
+      .before-after-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .before-after-container img {
+        width: 100%;
+      }
+
+      .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: url("public/img/Clean_Bike.jpg") no-repeat;
+        background-size: cover;
+        cursor: ew-resize;
+      }
+
+      .slider:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: #fff;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .before-text,
+      .after-text {
+        position: absolute;
+        top: 10px;
+        color: #fff;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+      }
+
+      .before-text {
+        right: 10px;
+      }
+
+      .after-text {
+        left: 10px;
+      }
+    </style>
   </head>
 
-  <body>
-    <div class="navbar">
-      <div class="logo">RedLine Auto Venture</div>
-      <!-- Navigation Toggle Button -->
-      <button class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-      <!-- Navigation Menu -->
-      <nav class="navigation">
-        <a href="#hero">Home</a>
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">About</a>
-        <a href="#contact" class="contact-button">Contact Us</a>
-      </nav>
-    </div>
-    <div id="hero" class="hero">
+  <body class="bg-white">
+    <nav class="bg-[#181818]">
       <div
-        class="video-placeholder"
-        style="background-image: url('public/img/Bike\ Photo.webp')"
-      ></div>
+        class="container mx-auto px-6 py-2 flex items-center justify-between"
+      >
+        <a class="logo" href="#">
+          <img
+            src="/public/img/logo.png"
+            alt="RedLine Auto Venture"
+            class="w-20"
+          />
+        </a>
+        <button
+          id="mobile-menu-button"
+          class="text-gray-100 focus:outline-none text-2xl"
+        >
+          <i class="fas fa-bars" id="menu-icon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div
+      id="mobile-menu"
+      class="bg--dark absolute w-full left-0 py-4 transition-transform"
+    >
+      <div class="container mx-auto px-6 space-y-4">
+        <a
+          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          href="#hero"
+          >Home</a
+        >
+        <a
+          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          href="#gallery"
+          >Gallery</a
+        >
+        <a
+          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          href="#services"
+          >Services</a
+        >
+        <a
+          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          href="#pricing"
+          >Pricing</a
+        >
+        <a
+          class="block bg-blue-500 px-6 py-2 text-white rounded hover:bg-blue-700 transition-colors duration-200"
+          href="#contact"
+          >Contact Us</a
+        >
+      </div>
+    </div>
+
+    <header class="h-screen relative">
       <video
-        class="hero-background-video"
         autoplay
         loop
         muted
-        onloadeddata="videoLoaded()"
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="public/video/Bike_Video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+        <source src="/public/video/Bike_Video.mp4" type="video/mp4" />
       </video>
-      <div class="hero-content">
-        <h1>Give Your Vehicles the Care They Deserve</h1>
-        <p>Vehicle Wash | Vehicle Polish | Interior Detailing | Insurance</p>
-      </div>
-    </div>
-    <div id="gallery" class="gallery-section">
-      <h2 class="gallery-title">Our Work Showcase</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="public/img/Test_1.jpeg" alt="Polished Bike" />
-          <p>Polished SUV Car</p>
-        </div>
-        <div class="gallery-item">
-          <img src="public/img/Test_2.jpeg" alt="Polished Bike" />
-          <p>Polished Car</p>
-        </div>
-        <div class="gallery-item">
-          <img src="public/img/Test_3.jpeg" alt="Polished Bike" />
-          <p>Polished SUV Car</p>
-        </div>
-        <div class="gallery-item">
-          <img src="public/img/Test_4.jpeg" alt="Polished Bike" />
-          <p>Polished Bike</p>
-        </div>
-        <div class="gallery-item">
-          <img src="public/img/Test_5.jpeg" alt="Polished Bike" />
-          <p>Polished Bike</p>
-        </div>
-        <!-- More gallery items here -->
-      </div>
-    </div>
-
-    <div id="services" class="service-section">
-      <h2 class="section-header">Main Services</h2>
-      <div class="card-container">
-        <div class="card">
-          <h3>Basic Wash</h3>
-          <p>₹40</p>
-          <p>Exterior wash & dry</p>
-        </div>
-        <div class="card">
-          <h3>Polish & Wax</h3>
-          <p>₹120</p>
-          <p>Exterior polish and wax</p>
-        </div>
-        <div class="card">
-          <h3>Full Detailing</h3>
-          <p>₹420</p>
-          <p>Interior & exterior detailing</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Detailed Pricing Section -->
-    <div id="pricing" class="pricing-section">
-      <h2 class="section-header">Pricing</h2>
-      <p class="pricing-title">Revised Rate List from April 2023</p>
-      <div class="table-responsive">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Vehicle Type</th>
-              <th>Foam Wash (₹)</th>
-              <th>Body Polish (₹)</th>
-              <th>Interior Vacuum (₹)</th>
-              <th>Interior Polish (₹)</th>
-              <th>Tyre Polish (₹)</th>
-              <th>Total (₹)</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Bicycle</td>
-              <td>20</td>
-              <td>10</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>30</td>
-              <td>7 min</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Scooty</td>
-              <td>40</td>
-              <td>40</td>
-              <td>-</td>
-              <td>-</td>
-              <td>20</td>
-              <td>100</td>
-              <td>25 min</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Motorcycle</td>
-              <td>50</td>
-              <td>40</td>
-              <td>-</td>
-              <td>-</td>
-              <td>30</td>
-              <td>120</td>
-              <td>30 min</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Tempo (3W)</td>
-              <td>140</td>
-              <td>60</td>
-              <td>-</td>
-              <td>30</td>
-              <td>30</td>
-              <td>260</td>
-              <td>60 min</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Small Car (4W)</td>
-              <td>150</td>
-              <td>Semi/Full 40/100</td>
-              <td>50</td>
-              <td>50</td>
-              <td>40</td>
-              <td>390</td>
-              <td>1h 40min</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>SUV Car (4W)</td>
-              <td>180</td>
-              <td>50</td>
-              <td>120</td>
-              <td>50</td>
-              <td>40</td>
-              <td>440</td>
-              <td>1h 50min</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Pickup (4W)</td>
-              <td>180</td>
-              <td>60</td>
-              <td>40</td>
-              <td>30</td>
-              <td>40</td>
-              <td>350</td>
-              <td>1h 50min</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Tractor Engine/Trailer</td>
-              <td>180/100</td>
-              <td>80/70</td>
-              <td>-</td>
-              <td>-</td>
-              <td>50/30</td>
-              <td>310/200</td>
-              <td>2h 10min</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Small Truck</td>
-              <td>200</td>
-              <td>80</td>
-              <td>50</td>
-              <td>50</td>
-              <td>60</td>
-              <td>440</td>
-              <td>2h 10min</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div id="contact" class="footer">
-      <div class="footer-column1">
-        <div class="footer-logo">RedLine Auto Venture</div>
-        <div class="footer-socials">
-          <a href="mailto:redlineautoventure@gmail.com">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="tel:8709190884">
-            <i class="fas fa-phone-alt"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/redlineautoventure/"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div class="absolute inset-0 bg-black opacity-60 z-1">
+        <div
+          class="container mx-auto px-6 h-full flex items-center justify-center z-20"
+        >
+          <div
+            class="text-center text-white sm:text-left sm:text-justify sm:text-4xl lg:text-5xl"
           >
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-        <div class="footer-copyright">
-          <p>
-            &copy; <span id="copyright-year"></span> RedLine Auto Venture. All
-            rights reserved.
-          </p>
-        </div>
-      </div>
-      <div class="footer-column2">
-        <div class="footer-careers">
-          <h3>Careers</h3>
-          <p>Join our team and grow with us.</p>
-          <a href="careers.html">View Openings</a>
+            <h1
+              class="title-slide-in text-3xl font-semibold sm:text-4xl lg:text-5xl sm:leading-normal lg:leading-relaxed text-shadow"
+            >
+              Give Your Vehicles the Care They Deserve
+            </h1>
+            <p
+              class="description-fade-in service-text mt-4 text-lg sm:text-xl sm:leading-normal lg:leading-relaxed text-shadow"
+            >
+              Vehicle Wash | Vehicle Polish | Interior Detailing | Insurance
+            </p>
+          </div>
         </div>
       </div>
-      <div class="footer-coulmn3">
-        <div class="footer-address">
-          <i class="fas fa-map-marker-alt"></i>
-          <p>
-            Infront of Indian Oil Petrol Pump<br />
-            Bakarpur, Sonepur, Saran, Bihar<br />
+
+      <!-- Increased opacity to 75% -->
+    </header>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-semibold text-center">Our Work Showcase</h2>
+        <div class="grid grid-cols-2 gap-6 mt-8 md:grid-cols-4">
+          <!-- Repeat this block for each image -->
+          <div
+            class="col-span-1 md:col-span-1 bg-gray-100 rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            onclick="openModalWithImage('public/img/Test_1.jpeg')"
+          >
+            <img
+              src="public/img/Test_1.jpeg"
+              alt="Gallery Image"
+              class="rounded-lg"
+            />
+          </div>
+
+          <div
+            class="col-span-1 md:col-span-1 bg-gray-100 rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            onclick="openModalWithImage('public/img/Test_3.jpeg')"
+          >
+            <img
+              src="public/img/Test_3.jpeg"
+              alt="Gallery Image"
+              class="rounded-lg"
+            />
+          </div>
+          <div
+            class="col-span-1 md:col-span-1 bg-gray-100 rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            onclick="openModalWithImage('public/img/Test_4.jpeg')"
+          >
+            <img
+              src="public/img/Test_4.jpeg"
+              alt="Gallery Image"
+              class="rounded-lg"
+            />
+          </div>
+          <div
+            class="col-span-1 md:col-span-1 bg-gray-100 rounded-lg shadow-md cursor-pointer transform hover:scale-105 transition-transform duration-300"
+            onclick="openModalWithImage('public/img/Test_5.jpeg')"
+          >
+            <img
+              src="public/img/Test_5.jpeg"
+              alt="Gallery Image"
+              class="rounded-lg"
+            />
+          </div>
+
+          <!-- Before-after section -->
+          <div
+            class="col-span-2 md:col-span-4 before-after-container shadow-md"
+          >
+            <img
+              src="public/img/Dirty_Bike.jpg"
+              alt="Before"
+              class="rounded-lg"
+            />
+            <div class="slider" id="slider"></div>
+            <div class="before-text">Before</div>
+            <div class="after-text">After</div>
+          </div>
+
+          <!-- End of block -->
+          <!-- You can add more blocks for more images -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 hidden flex items-center justify-center p-8 z-50 transition-opacity duration-300 ease-in-out opacity-0"
+      style="background-color: rgba(0, 0, 0, 0.5)"
+    >
+      <div class="bg-white rounded-lg shadow-lg relative inline-block">
+        <img
+          id="modalImage"
+          src=""
+          alt="Zoomed Image"
+          class="rounded-lg object-contain"
+          style="max-height: 80vh"
+        />
+        <button
+          id="closeModalButton"
+          class="absolute top-2 right-2 text-xl text-white bg-red-600 p-2 rounded-full"
+          style="width: 32px; height: 32px; line-height: 0"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <section class="py-16 bg-gray-100" id="services">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-semibold text-center">Main Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <i class="fas fa-tint text-3xl text-gray-500 opacity-60 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-700">Basic Wash</h3>
+            <p class="mt-4 font-bold text-gray-600">₹40</p>
+            <p class="text-gray-600">Exterior wash & dry</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <i
+              class="fas fa-paint-roller text-3xl text-gray-500 opacity-60 mb-4"
+            ></i>
+            <h3 class="text-2xl font-semibold text-gray-700">Polish & Wax</h3>
+            <p class="mt-4 font-bold text-gray-600">₹120</p>
+            <p class="text-gray-600">Exterior polish and wax</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <i class="fas fa-car text-3xl text-gray-500 opacity-60 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-700">Full Detailing</h3>
+            <p class="mt-4 font-bold text-gray-600">₹420</p>
+            <p class="text-gray-600">Interior & exterior detailing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-16 bg-gray-100" id="pricing">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-semibold text-center">Pricing</h2>
+        <p class="text-center mt-4 text-gray-500">
+          <span class="text-red-600">*</span> Revised Rate List from April 2023
+        </p>
+
+        <div
+          id="tableContainer"
+          class="mt-8 overflow-x-auto rounded-lg shadow-lg"
+        >
+          <table class="min-w-full bg-white text-xs sm:text-sm md:text-base">
+            <thead>
+              <tr class="text-white bg-gray-800">
+                <th class="px-2 sm:px-4 py-3">No.</th>
+                <th class="px-2 sm:px-4 py-3">Vehicle Type</th>
+                <th class="px-2 sm:px-4 py-3">Foam Wash</th>
+                <th class="px-2 sm:px-4 py-3">Body Polish</th>
+                <th class="px-2 sm:px-4 py-3">Interior Vacuum</th>
+                <th class="px-2 sm:px-4 py-3">Interior Polish</th>
+                <th class="px-2 sm:px-4 py-3">Tyre Polish</th>
+                <th class="px-2 sm:px-4 py-3">Total</th>
+                <th class="px-2 sm:px-4 py-3">
+                  <i class="fas fa-clock"></i> Time
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white text-xs sm:text-sm md:text-base divide-y">
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">1</td>
+                <td class="px-2 sm:px-4 py-3">Bicycle</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹20</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹10</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹30</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">7 min</td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">2</td>
+                <td class="px-2 sm:px-4 py-3">Scooty</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹20</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹100</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">25 min</td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">3</td>
+                <td class="px-2 sm:px-4 py-3">Motorcycle</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹30</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹120</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">30 min</td>
+              </tr>
+
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">4</td>
+                <td class="px-2 sm:px-4 py-3">Tempo (3W)</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹140</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹60</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹30</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹30</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹260</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">60 min</td>
+              </tr>
+
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">5</td>
+                <td class="px-2 sm:px-4 py-3">Small Car (4W)</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹150</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <div class="flex flex-col text-xs sm:text-sm">
+                    <span
+                      class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                      >Semi: ₹40</span
+                    >
+                    <span
+                      class="px-1 sm:px-2 py-1 mt-1 bg-green-200 text-green-800 rounded"
+                      >Full: ₹100</span
+                    >
+                  </div>
+                </td>
+
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹390</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">1h 40min</td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">6</td>
+                <td class="px-2 sm:px-4 py-3">SUV Car (4W)</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹180</span
+                  >
+                </td>
+
+                <td class="px-2 sm:px-4 py-3">
+                  <div class="flex flex-col text-xs sm:text-sm">
+                    <span
+                      class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                      >Semi: ₹50</span
+                    >
+                    <span
+                      class="px-1 sm:px-2 py-1 mt-1 bg-green-200 text-green-800 rounded"
+                      >Full: ₹120</span
+                    >
+                  </div>
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹440</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">1h 50min</td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">7</td>
+                <td class="px-2 sm:px-4 py-3">Pickup (4W)</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹180</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹60</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹30</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹40</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹350</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">1h 50min</td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">8</td>
+                <td class="px-2 sm:px-4 py-3">Tractor Engine/Trailer</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹180/100</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹80/70</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">-</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50/30</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹310/200</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">2h 10min</td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="px-2 sm:px-4 py-3">9</td>
+                <td class="px-2 sm:px-4 py-3">Small Truck</td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹200</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹80</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹50</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-green-200 text-green-800 rounded"
+                    >₹60</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">
+                  <span
+                    class="px-1 sm:px-2 py-1 bg-red-200 text-red-800 rounded"
+                    >₹440</span
+                  >
+                </td>
+                <td class="px-2 sm:px-4 py-3">2h 10min</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contact"
+      class="bg-[#181818] px-6 py-8 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-white mx-auto"
+    >
+      <!-- About Us Column -->
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-4">About Us</h3>
+        <p class="text-sm">
+          Established in February of 2022 by an engineer with more than 4 years
+          of experience in this field. We provide services to all kind of
+          vehicles from 2 wheelers to 6 wheelers.
+        </p>
+      </div>
+
+      <!-- Contact Us Column -->
+      <div class="p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-white mb-4">Contact Us</h3>
+        <div class="mt-4 bg-white rounded-md mb-4 overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3595.303958291685!2d85.17583067556151!3d25.694358311384278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5b81c35b297f%3A0x60de01a6dc2fb8db!2sRedline%20Auto%20Venture!5e0!3m2!1sen!2sin!4v1687177211577!5m2!1sen!2sin"
+            class="w-full h-48"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="flex items-center space-x-4 mb-2">
+          <i class="fas fa-map-marker-alt text-lg"></i>
+          <p class="text-sm">
+            Infront of Indian Oil Petrol Pump Bakarpur, Sonepur, Saran, Bihar
             Pin 841101
           </p>
         </div>
+        <div class="flex items-center space-x-4 mb-2">
+          <i class="fas fa-phone-alt text-lg"></i>
+          <a href="tel:8709190884">
+            <p class="text-sm">8709190884</p>
+          </a>
+        </div>
+        <div class="flex items-center space-x-4 mb-4">
+          <i class="fas fa-envelope text-lg"></i>
+          <a href="mailto:redlineautoventure@gmail.com">
+            <p class="text-sm">redlineautoventure@gmail.com</p>
+          </a>
+        </div>
+        <div class="flex space-x-4 mb-4">
+          <a
+            href="https://www.instagram.com/redlineautoventure/"
+            class="text-lg hover:text-red-500"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="#" class="text-lg hover:text-blue-500">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-lg hover:text-blue-300">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
       </div>
-    </div>
 
-    <script>
-      document.getElementById("copyright-year").innerHTML =
-        new Date().getFullYear();
-      document.addEventListener("DOMContentLoaded", function () {
-        // Toggle button and navigation menu
-        const toggle = document.querySelector(".nav-toggle");
-        const navigation = document.querySelector(".navigation");
+      <!-- Contact Form Column -->
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+        <form action="#" method="post">
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-semibold text-gray-600"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="mt-1 p-2 w-full rounded-md border border-gray-300"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-semibold text-gray-600"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="mt-1 p-2 w-full rounded-md border border-gray-300"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="message"
+              class="block text-sm font-semibold text-gray-600"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="mt-1 p-2 w-full rounded-md border border-gray-300"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  </body>
 
-        // Toggle navigation menu on click
-        toggle.addEventListener("click", function () {
-          toggle.classList.toggle("active");
-          navigation.classList.toggle("active");
-        });
-      });
+  <script>
+    document
+      .getElementById("closeModalButton")
+      .addEventListener("click", closeModal);
 
-      function videoLoaded() {
-        // Hide the placeholder image
-        document.querySelector(".video-placeholder").style.display = "none";
-
-        // Bring the video to the front
-        document.querySelector(".hero-background-video").style.zIndex = "-1";
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var video = document.querySelector(".hero-background-video");
-
-        // Check if video is already loaded
-        if (video.readyState >= 3) {
-          // HAVE_FUTURE_DATA (3) or HAVE_ENOUGH_DATA (4)
-          videoLoaded();
+    document
+      .getElementById("imageModal")
+      .addEventListener("click", function (event) {
+        if (event.target.id === "imageModal") {
+          closeModal();
         }
       });
-    </script>
-  </body>
+
+    function openModalWithImage(imageSrc) {
+      var modal = document.getElementById("imageModal");
+      document.getElementById("modalImage").src = imageSrc;
+      modal.classList.remove("hidden");
+      setTimeout(function () {
+        modal.classList.remove("opacity-0");
+      }, 10);
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("imageModal");
+      modal.classList.add("opacity-0");
+      setTimeout(function () {
+        modal.classList.add("hidden");
+      }, 300);
+    }
+    document
+      .getElementById("mobile-menu-button")
+      .addEventListener("click", function () {
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIcon = document.getElementById("menu-icon");
+
+        if (mobileMenu.classList.contains("open")) {
+          mobileMenu.classList.remove("open");
+          menuIcon.classList.replace("fa-times", "fa-bars");
+        } else {
+          mobileMenu.classList.add("open");
+          menuIcon.classList.replace("fa-bars", "fa-times");
+        }
+      });
+    const slider = document.querySelector(".slider");
+    const container = document.querySelector(".before-after-container");
+
+    let dragging = false;
+    let sliderWidth = 0;
+
+    let isAnimationStarted = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !isAnimationStarted) {
+          isAnimationStarted = true;
+          // Animate the slider to 50%
+          let sliderWidth = 0;
+          const animationInterval = setInterval(() => {
+            sliderWidth += 0.5;
+            if (sliderWidth >= 70) {
+              // stop at 50%
+              clearInterval(animationInterval);
+            } else {
+              slider.style.width = `${sliderWidth}%`;
+            }
+          }, 20);
+        }
+      });
+    });
+
+    observer.observe(container);
+
+    // Mouse events for dragging
+    container.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      dragging = true;
+    });
+
+    window.addEventListener("mouseup", () => {
+      dragging = false;
+    });
+
+    container.addEventListener("mousemove", (e) => {
+      if (dragging) {
+        let xPos = e.pageX - container.offsetLeft;
+        let size = container.offsetWidth;
+        let newWidth = (xPos / size) * 100;
+        if (newWidth >= 0 && newWidth <= 100) {
+          // set limits
+          slider.style.width = `${newWidth}%`;
+        }
+      }
+    });
+  </script>
 </html>
