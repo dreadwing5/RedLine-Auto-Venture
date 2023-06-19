@@ -8,7 +8,9 @@ body,
       }
 
       .bg--dark {
-        background-color: #202020;
+        background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
       
       }
 
@@ -32,21 +34,49 @@ body,
         background-position: center;
         z-index: -1;
     }
-      #mobile-menu {
+    @keyframes bounceInFromTop {
+        0% {
+          transform: translateY(-100%);
+        }
+        60% {
+          transform: translateY(10%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      
+      .nav-container {
+        animation: bounceInFromTop 0.9s ease;
+      }
+      .header{
+        height: 95vh;
+      }
+    
+    #mobile-menu {
         transform: translateY(-110%);
         transition: transform 0.6s ease-in-out;
-        z-index: 10; /* lower z-index than navbar */
-      }
-
+        background-color: rgba(255, 255, 255, 0.01);
+        backdrop-filter: blur(10px);
+        z-index: 10; /* lower z-index than logo and hamburger menu, but higher than the navbar */
+        top: 0;
+        padding-top: 80px; /* This pushes the content down */
+    }
+      
       #mobile-menu.open {
         transform: translateY(0);
       }
-
-      nav {
-        z-index: 20; /* higher z-index to stay above overlay */
+      
+      .nav-container {
         position: relative;
+        z-index: 12; /* higher z-index to stay above overlay */
       }
-
+      
+      .hamburger-menu {
+        position: relative;
+        z-index: 11; 
+      }
+            
       @keyframes slideInFromRight {
         0% {
           transform: translateX(100%);

@@ -19,10 +19,10 @@
     <title>RedLine Auto Venture</title>
   </head>
 
-  <body class="bg-white">
-    <nav class="bg-[#181818]">
+  <body>
+    <nav>
       <div
-        class="container mx-auto px-6 py-2 flex items-center justify-between"
+        class="nav-container container mx-auto px-6 py-2 flex items-center justify-between"
       >
         <a class="logo" href="#">
           <img
@@ -33,9 +33,9 @@
         </a>
         <button
           id="mobile-menu-button"
-          class="text-gray-100 focus:outline-none text-2xl"
+          class="hamburger-menu text-gray-100 focus:outline-none text-3xl"
         >
-          <i class="fas fa-bars" id="menu-icon"></i>
+          <i class="fas fa-bars shadow-lg" id="menu-icon"></i>
         </button>
       </div>
     </nav>
@@ -44,36 +44,36 @@
       id="mobile-menu"
       class="bg--dark absolute w-full left-0 py-4 transition-transform"
     >
-      <div class="container mx-auto px-6 space-y-4">
+      <div class="container mx-auto text-gray-100 px-6 space-y-4">
         <a
-          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          class="block font-bold px-6 py-2 hover:text-red-400 transition-colors duration-200"
           href="#hero"
           >Home</a
         >
         <a
-          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          class="block font-bold px-6 py-2 hover:text-red-400 transition-colors duration-200"
           href="#gallery"
           >Gallery</a
         >
         <a
-          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          class="block font-bold px-6 py-2 hover:text-red-400 transition-colors duration-200"
           href="#services"
           >Services</a
         >
         <a
-          class="block text-gray-100 px-6 py-2 hover:text-blue-500 transition-colors duration-200"
+          class="block font-bold px-6 py-2 hover:text-red-400 transition-colors duration-200"
           href="#pricing"
           >Pricing</a
         >
         <a
-          class="block bg-blue-500 px-6 py-2 text-white rounded hover:bg-blue-700 transition-colors duration-200"
+          class="block font-bold bg-red-600 px-6 py-3 text-white rounded hover:bg-red-700 transition-colors duration-200"
           href="#contact"
           >Contact Us</a
         >
       </div>
     </div>
 
-    <header class="h-screen">
+    <header class="header">
       <div
         class="video-placeholder"
         style="background-image: url('public/img/Bike_Photo.webp')"
@@ -91,20 +91,21 @@
       </video>
       <div class="absolute inset-0 bg-black opacity-60 z-1">
         <div
-          class="container mx-auto px-6 h-full flex items-center justify-center z-20"
+          class="container mx-auto px-6 h-full flex flex-col justify-end items-center z-20"
+          style="padding-bottom: 70%"
         >
           <div
-            class="text-center text-white sm:text-left sm:text-justify sm:text-4xl lg:text-5xl"
+            class="text-white sm:text-left sm:text-justify sm:text-4xl lg:text-5xl"
           >
             <h1
-              class="title-slide-in text-3xl font-semibold sm:text-4xl lg:text-5xl sm:leading-normal lg:leading-relaxed text-shadow"
+              class="title-slide-in text-4xl font-semibold sm:text-4xl lg:text-5xl sm:leading-normal lg:leading-relaxed text-shadow"
             >
               Give Your Vehicles the Care They Deserve
             </h1>
             <p
-              class="description-fade-in service-text mt-4 text-lg sm:text-xl sm:leading-normal lg:leading-relaxed text-shadow"
+              class="description-fade-in service-text mt-4 text-md sm:text-xl sm:leading-normal lg:leading-relaxed text-shadow"
             >
-              Vehicle Wash | Vehicle Polish | Interior Detailing | Insurance
+              Vehicle Wash | Vehicle Polish | Interior Detailing
             </p>
           </div>
         </div>
@@ -114,9 +115,9 @@
     </header>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-16 bg-white">
+    <section id="gallery" class="mb-16 bg-white">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-semibold text-center">Our Work Showcase</h2>
+        <h2 class="text-3xl font-semibold text-center">Our Work Showcase</h2>
         <div class="grid grid-cols-2 gap-6 mt-8 md:grid-cols-4">
           <!-- Repeat this block for each image -->
           <div
@@ -223,7 +224,7 @@
 
     <section class="py-16 bg-gray-100" id="services">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-semibold text-center">Main Services</h2>
+        <h2 class="text-3xl font-semibold text-center">Main Services</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           <!-- Card 1 -->
           <div class="bg-white rounded-lg shadow-md p-6 text-center">
@@ -254,7 +255,7 @@
 
     <section id="pricing" class="py-16 bg-gray-100" id="pricing">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-semibold text-center">Pricing</h2>
+        <h2 class="text-3xl font-semibold text-center">Pricing</h2>
         <p class="text-center mt-4 text-gray-500">
           <span class="text-red-600">*</span> Revised Rate List from April 2023
         </p>
@@ -675,7 +676,7 @@
             <i class="fab fa-instagram"></i>
           </a>
 
-          <a href="#" class="text-lg hover:text-blue-500">
+          <a href="#" class="text-lg hover:text-b400-500">
             <i class="fab fa-facebook-f"></i>
           </a>
           <a href="#" class="text-lg hover:text-blue-300">
