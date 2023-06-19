@@ -21,9 +21,6 @@ body,
         text-transform: uppercase;
        
       }
-
-
-     
      
     .video-placeholder {
         position: absolute;
@@ -35,10 +32,6 @@ body,
         background-position: center;
         z-index: -1;
     }
-   
-
-
-    
       #mobile-menu {
         transform: translateY(-110%);
         transition: transform 0.6s ease-in-out;
@@ -83,6 +76,7 @@ body,
         opacity: 0;
         animation: fadeIn 1s ease-in 1.2s forwards; /* additional 1.2s delay */
       }
+
       .before-after-container {
         position: relative;
         width: 100%;
@@ -104,18 +98,33 @@ body,
         background-size: cover;
         cursor: ew-resize;
       }
+   
+.slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0px; /* Center align the vertical bar with the scrubber */
+   
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    cursor: ew-resize;
+}
 
-      .slider:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        background: #fff;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      }
+.scrubber {
+    position: absolute;
+    top: 50%;
+    right: -12px; /* Half the width of the scrubber */
+   
+    transform: translateY(-50%);
+    cursor: ew-resize;
+}
+.arrow-left {
+    fill: #ff3385;
+}
+
+.arrow-right {
+    fill: #5fb4e4;
+}
 
       .before-text,
       .after-text {
@@ -134,4 +143,5 @@ body,
       .after-text {
         left: 10px;
       }
+    
     

@@ -73,10 +73,10 @@
       </div>
     </div>
 
-    <header class="h-screen relative">
+    <header class="h-screen">
       <div
         class="video-placeholder"
-        style="background-image: url('public/img/Bike\ Photo.webp')"
+        style="background-image: url('public/img/Bike_Photo.webp')"
       ></div>
       <video
         class="absolute inset-0 w-full h-full object-cover"
@@ -170,7 +170,23 @@
               alt="Before"
               class="rounded-lg"
             />
-            <div class="slider" id="slider"></div>
+            <div class="slider after:w-4 md:after:w-2" id="slider">
+              <div
+                class="scrubber w-10 h-10 md:w-8 md:h-8 bg-opacity-60 absolute grid place-content-center bg-black z-10 rounded-full top-1/2"
+              >
+                <svg viewBox="0 0 27 20" class="w-7 md:w-5">
+                  <path
+                    class="arrow-left w-16"
+                    d="M9.6 0L0 9.6l9.6 9.6z"
+                  ></path>
+                  <path
+                    class="arrow-right w-16"
+                    d="M17 19.2l9.5-9.6L16.9 0z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
             <div class="before-text">Before</div>
             <div class="after-text">After</div>
           </div>
@@ -829,5 +845,35 @@
         }
       }
     });
+
+    const scrubber = document.querySelector(".scrubber");
+
+    scrubber.addEventListener(
+      "touchstart",
+      (e) => {
+        e.preventDefault();
+        dragging = true;
+      },
+      { passive: false }
+    );
+
+    // window.addEventListener("touchend", () => {
+    //   dragging = false;
+    // });
+
+    scrubber.addEventListener(
+      "touchmove",
+      (e) => {
+        if (dragging) {
+          let xPos = e.touches[0].clientX - container.offsetLeft;
+          let size = container.offsetWidth;
+          let newWidth = (xPos / size) * 100;
+          if (newWidth >= 0 && newWidth <= 100) {
+            slider.style.width = `${newWidth}%`;
+          }
+        }
+      },
+      { passive: false }
+    );
   </script>
 </html>
