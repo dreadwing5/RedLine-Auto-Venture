@@ -17,104 +17,6 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>RedLine Auto Venture</title>
-
-    <style>
-      #mobile-menu {
-        transform: translateY(-110%);
-        transition: transform 0.6s ease-in-out;
-        z-index: 10; /* lower z-index than navbar */
-      }
-
-      #mobile-menu.open {
-        transform: translateY(0);
-      }
-
-      nav {
-        z-index: 20; /* higher z-index to stay above overlay */
-        position: relative;
-      }
-
-      @keyframes slideInFromRight {
-        0% {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      .title-slide-in {
-        opacity: 0;
-        animation: slideInFromRight 1s ease-out forwards;
-      }
-
-      .description-fade-in {
-        opacity: 0;
-        animation: fadeIn 1s ease-in 1.2s forwards; /* additional 1.2s delay */
-      }
-      .before-after-container {
-        position: relative;
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .before-after-container img {
-        width: 100%;
-      }
-
-      .slider {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background: url("public/img/Clean_Bike.jpg") no-repeat;
-        background-size: cover;
-        cursor: ew-resize;
-      }
-
-      .slider:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        background: #fff;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      }
-
-      .before-text,
-      .after-text {
-        position: absolute;
-        top: 10px;
-        color: #fff;
-        font-weight: bold;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 5px 10px;
-      }
-
-      .before-text {
-        right: 10px;
-      }
-
-      .after-text {
-        left: 10px;
-      }
-    </style>
   </head>
 
   <body class="bg-white">
@@ -172,14 +74,20 @@
     </div>
 
     <header class="h-screen relative">
+      <div
+        class="video-placeholder"
+        style="background-image: url('public/img/Bike\ Photo.webp')"
+      ></div>
       <video
+        class="absolute inset-0 w-full h-full object-cover"
         autoplay
         loop
         muted
         playsinline
-        class="absolute inset-0 w-full h-full object-cover"
+        onloadeddata="videoLoaded()"
       >
-        <source src="/public/video/Bike_Video.mp4" type="video/mp4" />
+        <source src="public/video/Bike_Video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
       <div class="absolute inset-0 bg-black opacity-60 z-1">
         <div
@@ -258,7 +166,7 @@
             class="col-span-2 md:col-span-4 before-after-container shadow-md"
           >
             <img
-              src="public/img/Dirty_Bike.jpg"
+              src="public/img/Dirty_Bike.webp"
               alt="Before"
               class="rounded-lg"
             />
@@ -811,6 +719,24 @@
   </body>
 
   <script>
+    function videoLoaded() {
+      // Hide the placeholder image
+      document.querySelector(".video-placeholder").style.display = "none";
+
+      // Bring the video to the front
+      document.querySelector(".hero-background-video").style.zIndex = "-1";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var video = document.querySelector(".hero-background-video");
+
+      // Check if video is already loaded
+      if (video.readyState >= 3) {
+        // HAVE_FUTURE_DATA (3) or HAVE_ENOUGH_DATA (4)
+        videoLoaded();
+      }
+    });
+
     document
       .getElementById("closeModalButton")
       .addEventListener("click", closeModal);
