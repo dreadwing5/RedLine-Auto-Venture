@@ -6,10 +6,66 @@ body,
         scroll-behavior: smooth;
 
       }
+   
+  #nav-icon3 {
+    width: 40px; /* Adjusted width */
+    height: 30px; /* Adjusted height */
+    position: relative;
+    margin: 0;
+    transform: rotate(0deg);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Smoother animation */
+    cursor: pointer;
+}
+
+#nav-icon3 span {
+    display: block;
+    position: absolute;
+    height: 5px; /* Adjusted height */
+    width: 80%; /* Adjusted width */
+    background: white; /* Changed color to white */
+    border-radius: 5px; /* Adjusted border radius */
+    opacity: 1;
+    left: 10%; /* Centered horizontally */
+    transform: rotate(0deg);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Smoother animation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added box shadow */
+}
+
+#nav-icon3 span:nth-child(1) {
+    top: 4px; /* Adjusted top */
+}
+
+#nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
+    top: 14px; /* Adjusted top */
+}
+
+#nav-icon3 span:nth-child(4) {
+    top: 24px; /* Adjusted top */
+}
+
+#nav-icon3.open span:nth-child(1) {
+    top: 14px; /* Adjusted top */
+    width: 0%;
+    left: 50%;
+}
+
+#nav-icon3.open span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+#nav-icon3.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+#nav-icon3.open span:nth-child(4) {
+    top: 14px; /* Adjusted top */
+    width: 0%;
+    left: 50%;
+}
 
       .bg--dark {
         background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
 
       
       }
@@ -50,24 +106,50 @@ body,
         animation: bounceInFromTop 0.9s ease;
       }
       .header{
-        height: 90vh;
+        height: 95vh;
       }
+
+      #mobile-menu {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+     
+        
+       
+     
+      
+        
+       
+    }
+    
+   
     
     #mobile-menu {
-        transform: translateY(-110%);
-        transition: transform 0.6s ease-in-out;
-        background-color: rgba(255, 255, 255, 0.01);
-        backdrop-filter: blur(10px);
-        z-index: 10; /* lower z-index than logo and hamburger menu, but higher than the navbar */
-        top: 0;
-        padding-top: 80px; /* This pushes the content down */
-    }
-      
-      #mobile-menu.open {
-        transform: translateY(0);
-      }
+      background-color: #181818;
+      transition: opacity 0.4s ease-in-out, max-height 0.6s ease-out, visibility 0.6s ease-out ;
+      max-height: 0; /* Initially hidden by having zero height */
+ 
+      visibility: hidden; /* Hide the menu */
+      top: 0;
+      padding-top: 80px; /* This pushes the content down */
+      position: absolute; /* Ensure that position is absolute so the top property works */
+      width: 100%; /* Set the width to cover the whole screen width */
+      overflow: hidden; /* Prevent inner content from spilling over */
+      z-index: 10; /* Bring to front */
+      opacity: 0;
+        
+  }
+  
+  #mobile-menu.open {
+      max-height: 45vh; /* Max height when expanded */
+      visibility: visible; /* Make it visible */
+      opacity: 0.95;
+ 
+   
+  }
       
       .nav-container {
+        background-color: transparent;
+        overflow: hidden;
         position: relative;
         z-index: 12; /* higher z-index to stay above overlay */
       }
@@ -143,13 +225,13 @@ body,
 .scrubber {
     position: absolute;
     top: 50%;
-    right: -12px; /* Half the width of the scrubber */
+    right: -16px; /* Half the width of the scrubber */
    
     transform: translateY(-50%);
     cursor: ew-resize;
 }
 .arrow-left {
-    fill: #ff3385;
+    fill: #dc2626;
 }
 
 .arrow-right {

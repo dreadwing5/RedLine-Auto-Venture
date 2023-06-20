@@ -31,14 +31,42 @@
             class="w-20"
           />
         </a>
-        <button
+        <div id="nav-icon3" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- <button
           id="mobile-menu-button"
           class="hamburger-menu text-gray-100 focus:outline-none text-3xl"
         >
           <i class="fas fa-bars shadow-lg" id="menu-icon"></i>
-        </button>
+        </button> -->
       </div>
     </nav>
+
+    <div
+      id="scrollUpButton"
+      class="z-15 fixed bottom-4 right-4 z-10 p-3 bg-[#181818] bg-opacity-60 rounded-full cursor-pointer opacity-0 invisible transition-all duration-300"
+      onclick="scrollToTop()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </div>
 
     <div
       id="mobile-menu"
@@ -171,7 +199,7 @@
               alt="Before"
               class="rounded-lg"
             />
-            <div class="slider after:w-4 md:after:w-2" id="slider">
+            <div class="slider after:w-2 md:after:w-2" id="slider">
               <div
                 class="scrubber w-10 h-10 md:w-8 md:h-8 bg-opacity-60 absolute grid place-content-center bg-black z-10 rounded-full top-1/2"
               >
@@ -735,146 +763,5 @@
     </section>
   </body>
 
-  <script>
-    function videoLoaded() {
-      // Hide the placeholder image
-      document.querySelector(".video-placeholder").style.display = "none";
-
-      // Bring the video to the front
-      document.querySelector(".hero-background-video").style.zIndex = "-1";
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      var video = document.querySelector(".hero-background-video");
-
-      // Check if video is already loaded
-      if (video.readyState >= 3) {
-        // HAVE_FUTURE_DATA (3) or HAVE_ENOUGH_DATA (4)
-        videoLoaded();
-      }
-    });
-
-    document
-      .getElementById("closeModalButton")
-      .addEventListener("click", closeModal);
-
-    document
-      .getElementById("imageModal")
-      .addEventListener("click", function (event) {
-        if (event.target.id === "imageModal") {
-          closeModal();
-        }
-      });
-
-    function openModalWithImage(imageSrc) {
-      var modal = document.getElementById("imageModal");
-      document.getElementById("modalImage").src = imageSrc;
-      modal.classList.remove("hidden");
-      setTimeout(function () {
-        modal.classList.remove("opacity-0");
-      }, 10);
-    }
-
-    function closeModal() {
-      var modal = document.getElementById("imageModal");
-      modal.classList.add("opacity-0");
-      setTimeout(function () {
-        modal.classList.add("hidden");
-      }, 300);
-    }
-    document
-      .getElementById("mobile-menu-button")
-      .addEventListener("click", function () {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const menuIcon = document.getElementById("menu-icon");
-
-        if (mobileMenu.classList.contains("open")) {
-          mobileMenu.classList.remove("open");
-          menuIcon.classList.replace("fa-times", "fa-bars");
-        } else {
-          mobileMenu.classList.add("open");
-          menuIcon.classList.replace("fa-bars", "fa-times");
-        }
-      });
-    const slider = document.querySelector(".slider");
-    const container = document.querySelector(".before-after-container");
-
-    let dragging = false;
-    let sliderWidth = 0;
-
-    let isAnimationStarted = false;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !isAnimationStarted) {
-          isAnimationStarted = true;
-          // Animate the slider to 50%
-          let sliderWidth = 0;
-          const animationInterval = setInterval(() => {
-            sliderWidth += 0.5;
-            if (sliderWidth >= 70) {
-              // stop at 50%
-              clearInterval(animationInterval);
-            } else {
-              slider.style.width = `${sliderWidth}%`;
-            }
-          }, 20);
-        }
-      });
-    });
-
-    observer.observe(container);
-
-    // Mouse events for dragging
-    container.addEventListener("mousedown", (e) => {
-      e.preventDefault();
-      dragging = true;
-    });
-
-    window.addEventListener("mouseup", () => {
-      dragging = false;
-    });
-
-    container.addEventListener("mousemove", (e) => {
-      if (dragging) {
-        let xPos = e.pageX - container.offsetLeft;
-        let size = container.offsetWidth;
-        let newWidth = (xPos / size) * 100;
-        if (newWidth >= 0 && newWidth <= 100) {
-          // set limits
-          slider.style.width = `${newWidth}%`;
-        }
-      }
-    });
-
-    const scrubber = document.querySelector(".scrubber");
-
-    scrubber.addEventListener(
-      "touchstart",
-      (e) => {
-        e.preventDefault();
-        dragging = true;
-      },
-      { passive: false }
-    );
-
-    // window.addEventListener("touchend", () => {
-    //   dragging = false;
-    // });
-
-    scrubber.addEventListener(
-      "touchmove",
-      (e) => {
-        if (dragging) {
-          let xPos = e.touches[0].clientX - container.offsetLeft;
-          let size = container.offsetWidth;
-          let newWidth = (xPos / size) * 100;
-          if (newWidth >= 0 && newWidth <= 100) {
-            slider.style.width = `${newWidth}%`;
-          }
-        }
-      },
-      { passive: false }
-    );
-  </script>
+  <script src="script.js"></script>
 </html>
