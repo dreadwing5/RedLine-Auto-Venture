@@ -109,19 +109,6 @@ body,
         height: 95vh;
       }
 
-      #mobile-menu {
-        -webkit-text-size-adjust: 100%;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-     
-        
-       
-     
-      
-        
-       
-    }
-    
-   
     
     #mobile-menu {
       background-color: #181818;
@@ -140,7 +127,7 @@ body,
   }
   
   #mobile-menu.open {
-      max-height: 45vh; /* Max height when expanded */
+      max-height: 60vh; /* Max height when expanded */
       visibility: visible; /* Make it visible */
       opacity: 0.95;
  
